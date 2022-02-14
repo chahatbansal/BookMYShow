@@ -10,4 +10,8 @@ import com.webapp.bookmyshowapp.model.City;
 @Repository
 @Transactional(readOnly=true)
 public interface CityRepository extends JpaRepository<City,Long>{
+	
+	City findById(long id);
+	
+	City findByName(String name);
 }

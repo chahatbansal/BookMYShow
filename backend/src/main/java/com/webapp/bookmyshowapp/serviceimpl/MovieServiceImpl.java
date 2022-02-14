@@ -1,5 +1,6 @@
 package com.webapp.bookmyshowapp.serviceimpl;
 
+import java.util.Objects;
 import java.util.Set;
 
 import javax.persistence.PersistenceException;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.webapp.bookmyshowapp.exceptions.DaoException;
+import com.webapp.bookmyshowapp.exceptions.MovieException;
 import com.webapp.bookmyshowapp.form.MovieCreateForm;
 import com.webapp.bookmyshowapp.model.Movie;
 import com.webapp.bookmyshowapp.repository.MovieRepository;
@@ -59,6 +61,20 @@ public class MovieServiceImpl implements MovieService{
 			throw ex;
 		}
 		return movies;
+	}
+
+	@Override
+	public Movie getMovie(long id) {
+		// TODO Auto-generated method stub
+		Movie movie = null;
+		try {
+			log.info("Fetching movie from database for id : " + id);
+			movie = movieRepository.findById(id);
+			log.info("Movie fetched from database successfully for id : " + id);
+		}catch(Exception ex) {
+			throw ex;
+		}
+		return movie;
 	}
 
 }

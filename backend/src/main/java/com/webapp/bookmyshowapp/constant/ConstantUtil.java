@@ -19,10 +19,26 @@ public class ConstantUtil {
 	 */
 	public static final String ERROR_MOVIE_CREATE  = "Error creating movie";
 	public static final String ERROR_MOVIE_NOT_FOUND  = "Error movies does not exist";
-	
+	public static final String ERROR_MOVIE_FETCH  = "Error fetching MOVIE in db";
+	public static final String ERROR_MOVIE_DELETE_DB = "Error deleting movie in db";
 	
 	/*
 	 * City Error
 	 */
 	public static final String ERROR_CITY_CREATE  = "Error creating city";
+	public static final String ERROR_CITY_FETCH  = "Error fetching city in db";
+	public static final String ERROR_CITY_NOT_FOUND = "Error city does not exist";
+
+	/*
+	 * Cast Error
+	 */
+	public static final String ERROR_CAST_DELETE_DB = "Error deleting cast in db";
+	public static final String ERROR_CAST_CREATE  = "Error creating cast";
+	public static final String ERROR_CAST_NOT_FOUND  = "Error cast does not exist";
+	public static final String ERROR_CAST_FETCH  = "Error fetching cast in db";
+	
+	/*
+	 * Subregion Error
+	 */
+	public static final String ERROR_SUBREGION_CREATE  = "Error creating subregion";
 }

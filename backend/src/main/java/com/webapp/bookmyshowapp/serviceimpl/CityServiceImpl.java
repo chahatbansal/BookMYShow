@@ -3,6 +3,7 @@ package com.webapp.bookmyshowapp.serviceimpl;
 import com.webapp.bookmyshowapp.exceptions.DaoException;
 import com.webapp.bookmyshowapp.form.CityCreateForm;
 import com.webapp.bookmyshowapp.model.City;
+import com.webapp.bookmyshowapp.model.Movie;
 import com.webapp.bookmyshowapp.repository.CityRepository;
 
 import com.webapp.bookmyshowapp.service.CityService;
@@ -43,5 +44,19 @@ public class CityServiceImpl implements CityService {
 	            throw ex;
 	        }
 	        return city;
+	}
+
+	@Override
+	public City getCity(long id) {
+		// TODO Auto-generated method stub
+		City city = null;
+		try {
+			log.info("Fetching city from database for id : " + id);
+			city = cityRepository.findById(id);
+			log.info("City fetched from database successfully for id : " + id);
+		}catch(Exception ex) {
+			throw ex;
+		}
+		return city;
 	}
 }

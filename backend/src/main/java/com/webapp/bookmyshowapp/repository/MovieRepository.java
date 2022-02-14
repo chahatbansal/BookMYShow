@@ -16,4 +16,6 @@ public interface MovieRepository extends JpaRepository<Movie,Long>{
 	
 	@Query("FROM Movie m WHERE m.name in (:movies)")
 	Set<Movie> findAllMoviesByNames(@Param("movies") Set<String> movieNames);
+	
+	Movie findById(long id);
 }

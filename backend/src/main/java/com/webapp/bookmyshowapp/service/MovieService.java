@@ -7,7 +7,9 @@ import com.webapp.bookmyshowapp.model.Movie;
 
 public interface MovieService {
 
+	Movie getMovie(long id);
+
 	Movie saveMovie(MovieCreateForm movieCreateForm) throws Exception;
 	
-	 Set<Movie> findAllMoviesByNames(Set<String> movieNames);
+	Set<Movie> findAllMoviesByNames(Set<String> movieNames);
 }

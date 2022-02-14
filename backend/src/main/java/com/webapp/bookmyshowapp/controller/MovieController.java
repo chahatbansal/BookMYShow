@@ -2,16 +2,17 @@ package com.webapp.bookmyshowapp.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
+import com.webapp.bookmyshowapp.exceptions.CastException;
+import com.webapp.bookmyshowapp.model.City;
+import com.webapp.bookmyshowapp.service.CityService;
 import com.webapp.bookmyshowapp.util.BaseExceptionHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.webapp.bookmyshowapp.constant.ConstantUtil;
 import com.webapp.bookmyshowapp.constant.RestEndPoints;
@@ -34,6 +35,21 @@ public class MovieController extends BaseExceptionHandler {
 	
 	@Autowired
 	MovieService movieService;
+
+	@GetMapping(RestEndPoints.GET_MOVIE)
+	public ResponseEntity<Object> getMovie(@PathVariable("id") long id){
+		Movie movie = null;
+		try {
+			movie = movieService.getMovie(id); 
+			if(Objects.isNull(movie)) {
+				return handle404ResourceNotFoundRequest(ConstantUtil.ERROR_MOVIE_NOT_FOUND);
+			}
+		}catch(Exception ex) {
+			log.error("Error occured while fetching MOVIE from database",ex);
+			return handle500InternalServerError(ConstantUtil.ERROR_MOVIE_FETCH,ex);
+		}
+		return handle200OkRequest(movie);
+	}
 	
 	@PostMapping(RestEndPoints.CREATE_MOVIE)
 	public ResponseEntity<Object> createMovie(@RequestBody MovieCreateForm movieCreateForm){
@@ -51,6 +67,9 @@ public class MovieController extends BaseExceptionHandler {
 		}catch(MovieException me) {
 			log.error("Exception occured while validating movie Create Form in movieutil " +LogConstantUtil.LOG_MOVIE_EXCEPTION,me);
 			return handle400BadRequest(ConstantUtil.ERROR_MOVIE_CREATE,me);
+		}catch(CastException ce) {
+			log.error("No cast exist for the given names in request" + LogConstantUtil.LOG_CAST_EXCEPTION, ce);
+			return handle404ResourceNotFoundRequest(ConstantUtil.ERROR_CAST_NOT_FOUND, ce);
 		}catch(DaoException de) {
 			log.error("Exception occured while creating movie record in db " +LogConstantUtil.LOG_DAO_EXCEPTION, de);
 			return handle602DatabaseError(ConstantUtil.ERROR_MOVIE_CREATE,de);

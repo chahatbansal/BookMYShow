@@ -55,7 +55,7 @@ public class CityUtil extends DateUtil{
         	movies = movieService.findAllMoviesByNames(cityCreateForm.getMovies());
             city.setName(cityCreateForm.getName());
             if(Objects.isNull(movies) || movies.isEmpty()) {
-            	throw new MovieException("Moveis Not Found for names : " + cityCreateForm.getMovies());
+            	throw new MovieException("Movies Not Found for names : " + cityCreateForm.getMovies());
             }
             city.setMovies(movies);
             city.setCreated(getCurrentDateAndTime());

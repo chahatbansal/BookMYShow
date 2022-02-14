@@ -20,5 +20,28 @@ public class CommonErrorMessageConstant {
 	
 	@Value("${error.field.empty}")
 	private String emptyError;
-	
+
+	public String getBlankError() {
+		return blankError;
+	}
+
+	public void setBlankError(String blankError) {
+		this.blankError = blankError;
+	}
+
+	public String getUniqueKeyError() {
+		return uniqueKeyError;
+	}
+
+	public void setUniqueKeyError(String uniqueKeyError) {
+		this.uniqueKeyError = uniqueKeyError;
+	}
+
+	public String getEmptyError() {
+		return emptyError;
+	}
+
+	public void setEmptyError(String emptyError) {
+		this.emptyError = emptyError;
+	}
 }

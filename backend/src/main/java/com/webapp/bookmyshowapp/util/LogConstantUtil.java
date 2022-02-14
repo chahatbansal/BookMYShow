@@ -8,7 +8,11 @@ public class LogConstantUtil {
 	
 	public static final String LOG_MOVIE_EXCEPTION = "MovieException:: ";
 	
+	public static final String LOG_SUBREGION_EXCEPTION = "SubregionException::";
+	
 	public static final String LOG_CITY_EXCEPTION = "CityException:: ";
+
+	public static final String LOG_CAST_EXCEPTION = "CastException:: ";
 	
 	public static final String LOG_DBDOWN_AND_OTHER_EXCEPTION = "DatabaseDownOrOtherException:: Please check server logs to validate";
 	
