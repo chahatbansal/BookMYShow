@@ -15,6 +15,15 @@ public class RestEndPoints {
 	public static final String CREATE_CITY = "/city/new";
 	public static final String GET_CITY = "/city/{id}";
 	public static final String DELETE_CITY = "/city/delete/{id}";
+	
+	/*
+	 * Theater Movie
+	 */
+	public static final String CREATE_THEATER_MOVIE = "/theatermovie/new";
+	
+	public static final String GET_MOVEIS_BY_CITY = "/moviesby/{city_id}";
+	public static final String GET_THEATERS_BY_CITY_MOVIE = "/theaters/{city_id}/{movie_id}";
+	public static final String GET_THEATERS_BY_CITY_REGION_MOVIE = "/theaters/{city_id}/{region_id}/{movie_id}";
 	/*
 	 * casting
 	 */
@@ -38,6 +47,8 @@ public class RestEndPoints {
 	public static final String GET_STATE = "/state/{id}";
 	public static final String DELETE_STATE = "/state/delete/{id}";
 	
-	public static final String CREATE_SUBREGION_CREATE = "/subregion/new";
+	public static final String CREATE_SUBREGION = "/subregion/new";
+	
+	public static final String CREATE_THEATER = "/theater/new";
 	
 }

@@ -1,5 +1,15 @@
 package com.webapp.bookmyshowapp.serviceimpl;
 
+import java.util.Set;
+
+import javax.persistence.PersistenceException;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.webapp.bookmyshowapp.exceptions.DaoException;
 import com.webapp.bookmyshowapp.form.CastCreateForm;
 import com.webapp.bookmyshowapp.model.Casting;
@@ -7,20 +17,6 @@ import com.webapp.bookmyshowapp.repository.CastRepository;
 import com.webapp.bookmyshowapp.service.CastService;
 import com.webapp.bookmyshowapp.util.CastUtil;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import java.util.Set;
-
-import javax.persistence.PersistenceException;
-
-@Data
 @Service
 public class CastServiceImpl implements CastService {
 	

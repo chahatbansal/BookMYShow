@@ -16,7 +16,7 @@ import com.webapp.bookmyshowapp.constant.ConstantUtil;
 import com.webapp.bookmyshowapp.constant.RestEndPoints;
 import com.webapp.bookmyshowapp.exceptions.CityException;
 import com.webapp.bookmyshowapp.exceptions.DaoException;
-import com.webapp.bookmyshowapp.exceptions.MovieException;
+import com.webapp.bookmyshowapp.exceptions.SubRegionException;
 import com.webapp.bookmyshowapp.form.SubRegionCreateForm;
 import com.webapp.bookmyshowapp.model.SubRegion;
 import com.webapp.bookmyshowapp.service.SubRegionService;
@@ -36,7 +36,7 @@ public class SubRegionController extends BaseExceptionHandler{
 	@Autowired
 	SubRegionUtil subRegionUtil;
 	
-	@PostMapping(RestEndPoints.CREATE_SUBREGION_CREATE)
+	@PostMapping(RestEndPoints.CREATE_SUBREGION)
 	public ResponseEntity<Object> createSubRegion(@RequestBody SubRegionCreateForm subRegionCreateForm){
 		
 		List<String> validationErrorList = new ArrayList<String>();
@@ -51,12 +51,12 @@ public class SubRegionController extends BaseExceptionHandler{
 				return handle400BadRequest(validationErrorList);
 			}
 			subRegion = subRegionService.saveSubRegion(subRegionCreateForm);
-		}catch(MovieException me) {
-			log.error("Exception occured while validating subregion Create Form in subRegionUtil " +LogConstantUtil.LOG_SUBREGION_EXCEPTION,me);
-			return handle400BadRequest(ConstantUtil.ERROR_SUBREGION_CREATE,me);
 		}catch(CityException ce) {
-			log.error("No city exist for the given names in request" + LogConstantUtil.LOG_CITY_EXCEPTION, ce);
+			log.error("No city exist for the given names in request" + LogConstantUtil.LOG_SUBREGION_EXCEPTION, ce);
 			return handle404ResourceNotFoundRequest(ConstantUtil.ERROR_CITY_NOT_FOUND, ce);
+		}catch(SubRegionException se) {
+			log.error("Exception occured while validating subregion Create Form in subregionUtil " +LogConstantUtil.LOG_SUBREGION_EXCEPTION,se);
+            return handle400BadRequest(ConstantUtil.ERROR_SUBREGION_CREATE,se);
 		}catch(DaoException de) {
 			log.error("Exception occured while creating subregion record in db " +LogConstantUtil.LOG_DAO_EXCEPTION, de);
 			return handle602DatabaseError(ConstantUtil.ERROR_SUBREGION_CREATE,de);

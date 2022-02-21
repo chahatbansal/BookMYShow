@@ -10,6 +10,8 @@ public class LogConstantUtil {
 	
 	public static final String LOG_SUBREGION_EXCEPTION = "SubregionException::";
 	
+	public static final String LOG_THEATER_EXCEPTION = "TheaterException::";
+	
 	public static final String LOG_CITY_EXCEPTION = "CityException:: ";
 
 	public static final String LOG_CAST_EXCEPTION = "CastException:: ";

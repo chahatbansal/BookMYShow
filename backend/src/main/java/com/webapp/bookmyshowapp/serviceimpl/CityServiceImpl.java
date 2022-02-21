@@ -1,14 +1,6 @@
 package com.webapp.bookmyshowapp.serviceimpl;
 
-import com.webapp.bookmyshowapp.exceptions.DaoException;
-import com.webapp.bookmyshowapp.form.CityCreateForm;
-import com.webapp.bookmyshowapp.model.City;
-import com.webapp.bookmyshowapp.model.Movie;
-import com.webapp.bookmyshowapp.repository.CityRepository;
-
-import com.webapp.bookmyshowapp.service.CityService;
-
-import com.webapp.bookmyshowapp.util.CityUtil;
+import javax.persistence.PersistenceException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,7 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.PersistenceException;
+import com.webapp.bookmyshowapp.exceptions.DaoException;
+import com.webapp.bookmyshowapp.form.CityCreateForm;
+import com.webapp.bookmyshowapp.model.City;
+import com.webapp.bookmyshowapp.repository.CityRepository;
+import com.webapp.bookmyshowapp.service.CityService;
+import com.webapp.bookmyshowapp.util.CityUtil;
 
 @Service
 public class CityServiceImpl implements CityService {

@@ -8,9 +8,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.webapp.bookmyshowapp.exceptions.CastException;
 import com.webapp.bookmyshowapp.exceptions.CityException;
-import com.webapp.bookmyshowapp.exceptions.MovieException;
+import com.webapp.bookmyshowapp.exceptions.SubRegionException;
 import com.webapp.bookmyshowapp.form.SubRegionCreateForm;
 import com.webapp.bookmyshowapp.model.City;
 import com.webapp.bookmyshowapp.model.SubRegion;
@@ -37,11 +36,11 @@ public class SubRegionUtil extends DateUtil{
      *
      */
 
-    public List<String> validate(SubRegionCreateForm subRegionCreateForm, List<String> validationErrorList) throws CastException {
+    public List<String> validate(SubRegionCreateForm subRegionCreateForm, List<String> validationErrorList) throws SubRegionException {
         try {
             return subRegionValidation.validate(subRegionCreateForm, validationErrorList);
         }catch(Exception e) {
-            throw new CastException(e.getMessage());
+            throw new SubRegionException(e.getMessage());
         }
     }
     
@@ -64,6 +63,7 @@ public class SubRegionUtil extends DateUtil{
             	throw new CityException("City Not Found For Name : " + subRegionCreateForm.getCityName());
             }
         	subRegion.setRegionName(subRegionCreateForm.getRegionName());
+        	subRegion.setCreated(getCurrentDateAndTime());
         	subRegion.setCity(city);
         }catch(Exception ex) {
             throw ex;

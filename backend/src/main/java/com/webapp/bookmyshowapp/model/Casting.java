@@ -1,14 +1,15 @@
 package com.webapp.bookmyshowapp.model;
 
-import javax.persistence.*;
+import java.io.Serializable;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import lombok.Getter;
 import lombok.Setter;
-
-import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @Table(name="casting")
@@ -27,33 +28,5 @@ public class Casting implements Serializable {
     private String castName;
 
     private String castImage;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getCastName() {
-        return castName;
-    }
-
-    public void setCastName(String castName) {
-        this.castName = castName;
-    }
-
-    public String getCastImage() {
-        return castImage;
-    }
-
-    public void setCastImage(String castImage) {
-        this.castImage = castImage;
-    }
-/* @JsonIgnore
-    @ManyToMany(mappedBy = "casting", fetch = FetchType.LAZY)
-    private Set<Movie> movies = new HashSet<Movie>();*/
-
 
 }

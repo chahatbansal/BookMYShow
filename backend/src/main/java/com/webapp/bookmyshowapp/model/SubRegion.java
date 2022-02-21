@@ -1,13 +1,25 @@
 package com.webapp.bookmyshowapp.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import java.util.Date;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name="sub_region")
@@ -18,55 +30,20 @@ public class SubRegion {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
-
+    
+    @Column(unique = true)
     private String regionName;
 
     private Date created;
 
     private Date modified;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getRegionName() {
-        return regionName;
-    }
-
-    public void setRegionName(String regionName) {
-        this.regionName = regionName;
-    }
-
-    public Date getCreated() {
-        return created;
-    }
-
-    public void setCreated(Date created) {
-        this.created = created;
-    }
-
-    public Date getModified() {
-        return modified;
-    }
-
-    public void setModified(Date modified) {
-        this.modified = modified;
-    }
-
-    public City getCity() {
-        return city;
-    }
-
-    public void setCity(City city) {
-        this.city = city;
-    }
-
-    @JsonIgnore
+    
+    
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "city_id", referencedColumnName = "id")
     private City city;
+    
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "subRegion", cascade = CascadeType.ALL)
+	private List<Theater> theaters = new ArrayList<>();
 }

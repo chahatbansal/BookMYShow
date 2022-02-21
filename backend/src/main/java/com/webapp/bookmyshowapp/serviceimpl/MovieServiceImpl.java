@@ -1,6 +1,5 @@
 package com.webapp.bookmyshowapp.serviceimpl;
 
-import java.util.Objects;
 import java.util.Set;
 
 import javax.persistence.PersistenceException;
@@ -12,7 +11,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.webapp.bookmyshowapp.exceptions.DaoException;
-import com.webapp.bookmyshowapp.exceptions.MovieException;
 import com.webapp.bookmyshowapp.form.MovieCreateForm;
 import com.webapp.bookmyshowapp.model.Movie;
 import com.webapp.bookmyshowapp.repository.MovieRepository;
@@ -54,7 +52,7 @@ public class MovieServiceImpl implements MovieService{
 		Set<Movie> movies=null;
 		try {
 			log.info("Fetching movies from db for nams : " + movieNames);
-			movies=movieRepository.findAllMoviesByNames(movieNames);
+			
 		}catch(PersistenceException de) {
 			throw new DaoException(de);
 		}catch(Exception ex) {

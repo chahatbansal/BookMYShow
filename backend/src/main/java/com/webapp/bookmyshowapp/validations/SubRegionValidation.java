@@ -8,8 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
-import com.webapp.bookmyshowapp.exceptions.CastException;
-import com.webapp.bookmyshowapp.form.CastCreateForm;
+import com.webapp.bookmyshowapp.exceptions.SubRegionException;
 import com.webapp.bookmyshowapp.form.SubRegionCreateForm;
 import com.webapp.bookmyshowapp.messages.CommonErrorMessageConstant;
 
@@ -27,7 +26,7 @@ public class SubRegionValidation {
      *
      */
 
-    public List<String> validate(SubRegionCreateForm subRegionCreateForm, List<String> validationErrorList) throws CastException {
+    public List<String> validate(SubRegionCreateForm subRegionCreateForm, List<String> validationErrorList) throws SubRegionException {
         try {
             if(StringUtils.isEmpty(subRegionCreateForm.getRegionName())) {
                 validationErrorList.add("Region Name" + commonErrorMessageConstant.getBlankError());
@@ -36,7 +35,7 @@ public class SubRegionValidation {
                 validationErrorList.add("City Name" + commonErrorMessageConstant.getBlankError());
             }
         }catch(Exception e) {
-            throw new CastException(e.getMessage());
+            throw new SubRegionException(e.getMessage());
         }
         return validationErrorList;
     }

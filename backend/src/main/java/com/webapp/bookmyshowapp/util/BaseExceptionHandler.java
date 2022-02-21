@@ -4,7 +4,6 @@ import java.util.Map;
 
 import com.webapp.bookmyshowapp.bean.ApiError;
 import com.webapp.bookmyshowapp.constant.ConstantUtil;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 public abstract class BaseExceptionHandler {
 

@@ -1,15 +1,10 @@
 package com.webapp.bookmyshowapp.util;
 
 import java.util.List;
-import java.util.Objects;
-import java.util.Set;
 
-import com.webapp.bookmyshowapp.exceptions.CastException;
-import com.webapp.bookmyshowapp.model.Casting;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.stereotype.Component;
 
 import com.webapp.bookmyshowapp.enums.CertificateType;
@@ -61,12 +56,7 @@ public class MovieUtil extends DateUtil{
 	public Movie createMovie(MovieCreateForm movieCreateForm) throws Exception{
 		log.info("Setting Values for Movie from MovieCreateForm");
 		Movie movie = new Movie();
-		Set<Casting> casting = null;
 		try {
-			casting = castService.findAllCastingByNames(movieCreateForm.getCastName());
-			if(Objects.isNull(casting) || casting.isEmpty()) {
-				throw new CastException("Casting Not Found for names : " + movieCreateForm.getCastName());
-			}
 			movie.setName(movieCreateForm.getName());
 			movie.setScreenType(movieCreateForm.getScreenType());
 			movie.setLanguage(MovieLanguage.valueOf(movieCreateForm.getLanguage()));
@@ -76,7 +66,6 @@ public class MovieUtil extends DateUtil{
 			movie.setCertifcateType(CertificateType.valueOf(movieCreateForm.getCertifcateType()));
 			movie.setRating(movieCreateForm.getRating());
 			movie.setCreated(getCurrentDateAndTime());
-			movie.setCasting(casting);
 			movie.setCreated(getCurrentDateAndTime());
 		}catch(Exception ex) {
 			throw ex;

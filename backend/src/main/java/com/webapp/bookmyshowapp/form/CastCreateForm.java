@@ -17,19 +17,4 @@ public class CastCreateForm {
     @NotNull(message="cast image  should not be blank.")
     private String castImage;
 
-    public String getCastName() {
-        return castName;
-    }
-
-    public void setCastName(String castName) {
-        this.castName = castName;
-    }
-
-    public String getCastImage() {
-        return castImage;
-    }
-
-    public void setCastImage(String castImage) {
-        this.castImage = castImage;
-    }
 }

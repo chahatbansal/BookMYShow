@@ -16,7 +16,8 @@ import java.util.Objects;
 
 @Component
 public class CityValidation {
-    Logger log = LoggerFactory.getLogger(CityUtil.class);
+    
+	Logger log = LoggerFactory.getLogger(CityValidation.class);
 
     @Autowired
     private CommonErrorMessageConstant commonErrorMessageConstant;
@@ -30,9 +31,6 @@ public class CityValidation {
         try {
             if(StringUtils.isEmpty(cityCreateForm.getName())) {
                 validationErrorList.add("Name" + commonErrorMessageConstant.getBlankError());
-            }
-            if(Objects.isNull(cityCreateForm.getMovies())) {
-            	validationErrorList.add("City" + commonErrorMessageConstant.getEmptyError());
             }
         }catch(Exception e) {
             throw new CityException(e.getMessage());

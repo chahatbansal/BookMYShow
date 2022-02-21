@@ -41,4 +41,14 @@ public class ConstantUtil {
 	 * Subregion Error
 	 */
 	public static final String ERROR_SUBREGION_CREATE  = "Error creating subregion";
+	public static final String ERROR_SUBREGION_NOT_FOUND  = "Error subregion does not exist";
+	
+	
+	public static final String ERROR_THEATER_CREATE  = "Error creating theater";
+	
+	/*
+	 * Theater Movie Error
+	 */
+	public static final String ERROR_THEATER_MOVIE_CREATE = "Error creating theater movie";
+	public static final String ERROR_THEATER_NOT_FOUND  = "Error theater does not exist";
 }

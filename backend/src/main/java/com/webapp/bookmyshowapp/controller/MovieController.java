@@ -4,23 +4,26 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import com.webapp.bookmyshowapp.exceptions.CastException;
-import com.webapp.bookmyshowapp.model.City;
-import com.webapp.bookmyshowapp.service.CityService;
-import com.webapp.bookmyshowapp.util.BaseExceptionHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.webapp.bookmyshowapp.constant.ConstantUtil;
 import com.webapp.bookmyshowapp.constant.RestEndPoints;
+import com.webapp.bookmyshowapp.exceptions.CastException;
 import com.webapp.bookmyshowapp.exceptions.DaoException;
 import com.webapp.bookmyshowapp.exceptions.MovieException;
 import com.webapp.bookmyshowapp.form.MovieCreateForm;
 import com.webapp.bookmyshowapp.model.Movie;
 import com.webapp.bookmyshowapp.service.MovieService;
+import com.webapp.bookmyshowapp.util.BaseExceptionHandler;
 import com.webapp.bookmyshowapp.util.LogConstantUtil;
 import com.webapp.bookmyshowapp.util.MovieUtil;
 
@@ -36,21 +39,6 @@ public class MovieController extends BaseExceptionHandler {
 	@Autowired
 	MovieService movieService;
 
-	@GetMapping(RestEndPoints.GET_MOVIE)
-	public ResponseEntity<Object> getMovie(@PathVariable("id") long id){
-		Movie movie = null;
-		try {
-			movie = movieService.getMovie(id); 
-			if(Objects.isNull(movie)) {
-				return handle404ResourceNotFoundRequest(ConstantUtil.ERROR_MOVIE_NOT_FOUND);
-			}
-		}catch(Exception ex) {
-			log.error("Error occured while fetching MOVIE from database",ex);
-			return handle500InternalServerError(ConstantUtil.ERROR_MOVIE_FETCH,ex);
-		}
-		return handle200OkRequest(movie);
-	}
-	
 	@PostMapping(RestEndPoints.CREATE_MOVIE)
 	public ResponseEntity<Object> createMovie(@RequestBody MovieCreateForm movieCreateForm){
 		List<String> validationErrorList = new ArrayList<String>();
@@ -76,6 +64,21 @@ public class MovieController extends BaseExceptionHandler {
 		}catch(Exception ex) {
 			log.error("Exception Occured While creating movie record " + LogConstantUtil.LOG_DBDOWN_AND_OTHER_EXCEPTION, ex);
 			return handle500InternalServerError(ConstantUtil.ERROR_MOVIE_CREATE,ex);
+		}
+		return handle200OkRequest(movie);
+	}
+
+	@GetMapping(RestEndPoints.GET_MOVIE)
+	public ResponseEntity<Object> getMovie(@PathVariable("id") long id){
+		Movie movie = null;
+		try {
+			movie = movieService.getMovie(id); 
+			if(Objects.isNull(movie)) {
+				return handle404ResourceNotFoundRequest(ConstantUtil.ERROR_MOVIE_NOT_FOUND);
+			}
+		}catch(Exception ex) {
+			log.error("Error occured while fetching MOVIE from database",ex);
+			return handle500InternalServerError(ConstantUtil.ERROR_MOVIE_FETCH,ex);
 		}
 		return handle200OkRequest(movie);
 	}
