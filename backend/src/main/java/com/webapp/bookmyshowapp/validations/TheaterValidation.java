@@ -22,7 +22,7 @@ public class TheaterValidation {
 	private CommonErrorMessageConstant commonErrorMessageConstant;
 	
 	  /*
-     * validate student
+     * validate theater
      * @param entity
      *
      */

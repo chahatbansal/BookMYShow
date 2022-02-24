@@ -23,7 +23,7 @@ public class CityValidation {
     private CommonErrorMessageConstant commonErrorMessageConstant;
 
     /*
-     * validate student
+     * validate city
      * @param entity
      *
      */

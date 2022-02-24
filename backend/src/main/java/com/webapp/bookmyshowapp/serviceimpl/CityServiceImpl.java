@@ -19,6 +19,7 @@ import com.webapp.bookmyshowapp.util.CityUtil;
 public class CityServiceImpl implements CityService {
 
     Logger log = LoggerFactory.getLogger(MovieServiceImpl.class);
+    
     @Autowired
     CityUtil cityUtil;
 
@@ -30,17 +31,17 @@ public class CityServiceImpl implements CityService {
 	public City saveCity(CityCreateForm cityCreateForm) throws Exception {
 		// TODO Auto-generated method stub
 		 City city = null;
-	        try {
-	            city = cityUtil.createCity(cityCreateForm);
-	            log.info("Persisting city record in db");
-	            city = cityRepository.save(city);
-	            log.info("Persisted city record in db successfully with id : " + city.getId());
-	        }catch(PersistenceException de) {
-	            throw new DaoException(de);
-	        }catch(Exception ex) {
-	            throw ex;
-	        }
-	        return city;
+		 try {
+			 city = cityUtil.createCity(cityCreateForm);
+			 log.info("Persisting city record in db");
+			 city = cityRepository.save(city);
+			 log.info("Persisted city record in db successfully with id : " + city.getId());
+		 }catch(PersistenceException de) {
+			 throw new DaoException(de);
+		 }catch(Exception ex) {
+			 throw ex;
+		 }
+		 return city;
 	}
 
 	@Override

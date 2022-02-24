@@ -51,4 +51,10 @@ public class ConstantUtil {
 	 */
 	public static final String ERROR_THEATER_MOVIE_CREATE = "Error creating theater movie";
 	public static final String ERROR_THEATER_NOT_FOUND  = "Error theater does not exist";
+	
+	public static final String ERROR_SHOW_CREATE  = "Error creating show";
+	public static final String ERROR_SHOW_NOT_FOUND  = "Error show does not exist";
+	
+	public static final String ERROR_MOVIE_SHOW_CREATE = "Error creating movie show";
+	
 }

@@ -37,13 +37,6 @@ public class City implements Serializable{
 	private Date created;
 	
 	private Date modified;
-	
-/*	 @OneToMany(
-		mappedBy = "city",
-		cascade = CascadeType.ALL
-	)
-	 @JsonIgnore
-	 private List<CityMovie> cityMovies = new ArrayList<>();*/
 
 	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "city", cascade = CascadeType.ALL)

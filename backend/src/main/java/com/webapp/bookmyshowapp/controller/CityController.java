@@ -52,7 +52,7 @@ public class CityController extends BaseExceptionHandler {
             }
             city=cityService.saveCity(cityCreateForm);
         }catch(CityException ce) {
-            log.error("Exception occured while validating city Create Form in studentUtil " +LogConstantUtil.LOG_CITY_EXCEPTION,ce);
+            log.error("Exception occured while validating city Create Form in cityUtil " +LogConstantUtil.LOG_CITY_EXCEPTION,ce);
             return handle400BadRequest(ConstantUtil.ERROR_CITY_CREATE,ce);
         }catch(DaoException de) {
             log.error("Exception occured while creating city record in db " +LogConstantUtil.LOG_DAO_EXCEPTION, de);

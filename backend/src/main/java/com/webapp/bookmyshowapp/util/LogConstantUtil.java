@@ -8,6 +8,8 @@ public class LogConstantUtil {
 	
 	public static final String LOG_MOVIE_EXCEPTION = "MovieException:: ";
 	
+	public static final String LOG_SHOW_EXCEPTION = "ShowException:: ";
+	
 	public static final String LOG_SUBREGION_EXCEPTION = "SubregionException::";
 	
 	public static final String LOG_THEATER_EXCEPTION = "TheaterException::";

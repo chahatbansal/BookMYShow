@@ -20,6 +20,7 @@ public class RestEndPoints {
 	 * Theater Movie
 	 */
 	public static final String CREATE_THEATER_MOVIE = "/theatermovie/new";
+	public static final String CREATE_MOVIE_SHOW = "/movieshow/new";
 	
 	public static final String GET_MOVEIS_BY_CITY = "/moviesby/{city_id}";
 	public static final String GET_THEATERS_BY_CITY_MOVIE = "/theaters/{city_id}/{movie_id}";
@@ -50,5 +51,9 @@ public class RestEndPoints {
 	public static final String CREATE_SUBREGION = "/subregion/new";
 	
 	public static final String CREATE_THEATER = "/theater/new";
+	
+	public static final String CREATE_SHOW = "/show/new";
+	
+	public static final String GET_SHOWS_BY_MOVIE = "/showsby/{movie_id}";
 	
 }

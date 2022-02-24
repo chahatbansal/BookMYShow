@@ -64,5 +64,12 @@ public class Movie implements Serializable{
 	cascade = CascadeType.ALL)
 	@JsonIgnore
 	private List<TheaterMovie> theaterMovies = new ArrayList<>();
+	
+	@OneToMany(
+	mappedBy = "movie",
+	cascade = CascadeType.ALL)
+	@JsonIgnore
+	private List<MovieShow> movieShows = new ArrayList<>();
+
 
 }

@@ -52,24 +52,10 @@ public class Theater implements Serializable{
     @JoinColumn(name = "sub_region_id", referencedColumnName = "id")
     private SubRegion subRegion;
 	
-	
-    /*@JsonIgnore
-	@ManyToMany(mappedBy = "movies", fetch = FetchType.LAZY)
-    private Set<Movie> cities = new HashSet<Movie>();*/
-
-	/*@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
-    @JoinTable(name = "theater_shows",
-            joinColumns = {
-                    @JoinColumn(name = "theater_id", referencedColumnName = "id",
-                            nullable = false, updatable = false)},
-            inverseJoinColumns = {
-                    @JoinColumn(name = "show_id", referencedColumnName = "id",
-                            nullable = false, updatable = false)})
-    private Set<Show> movies = new HashSet<Show>();*/
-	
 	@OneToMany(
 	mappedBy = "theater",
 	cascade = CascadeType.ALL)
 	@JsonIgnore
 	private List<TheaterMovie> theaterMovies = new ArrayList<>();
+
 }

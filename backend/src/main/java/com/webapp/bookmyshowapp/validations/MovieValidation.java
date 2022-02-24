@@ -16,13 +16,13 @@ import com.webapp.bookmyshowapp.util.MovieUtil;
 @Component
 public class MovieValidation {
 	
-	Logger log = LoggerFactory.getLogger(MovieUtil.class);
+	Logger log = LoggerFactory.getLogger(MovieValidation.class);
 	
 	@Autowired
 	private CommonErrorMessageConstant commonErrorMessageConstant;
 	
 	/*
-	 * validate student
+	 * validate movie
 	 * @param entity
 	 * 
 	 */

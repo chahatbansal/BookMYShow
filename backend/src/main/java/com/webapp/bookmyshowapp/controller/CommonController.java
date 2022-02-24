@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.webapp.bookmyshowapp.constant.ConstantUtil;
 import com.webapp.bookmyshowapp.constant.RestEndPoints;
 import com.webapp.bookmyshowapp.model.Movie;
+import com.webapp.bookmyshowapp.model.Show;
 import com.webapp.bookmyshowapp.model.Theater;
+import com.webapp.bookmyshowapp.service.MovieShowService;
 import com.webapp.bookmyshowapp.service.TheaterMovieService;
 import com.webapp.bookmyshowapp.util.BaseExceptionHandler;
 import com.webapp.bookmyshowapp.util.LogConstantUtil;
@@ -28,6 +30,9 @@ public class CommonController extends BaseExceptionHandler{
 	
 	@Autowired
 	TheaterMovieService theaterMovieService;
+	
+	@Autowired
+	MovieShowService movieShowService;
 
 	@GetMapping(RestEndPoints.GET_MOVEIS_BY_CITY)
 	public ResponseEntity<Object> getMoviesByCity(@PathVariable("city_id") long cityId){
@@ -74,5 +79,16 @@ public class CommonController extends BaseExceptionHandler{
 		}
 		return handle200OkRequest(theaters);
 	}
-
+	
+	@GetMapping(RestEndPoints.GET_SHOWS_BY_MOVIE)
+	public ResponseEntity<Object> getAllTheatersByCityAndRegionAndMovie(@PathVariable("movie_id") long movieId){
+		Set<Show> shows = null;
+		try {
+			shows = movieShowService.getShowsByMovie(movieId);
+		}catch(Exception ex) {
+			log.error("Exception Occured While geting shows " + LogConstantUtil.LOG_DBDOWN_AND_OTHER_EXCEPTION, ex);
+	    	return handle500InternalServerError(ConstantUtil.ERROR_SHOW_NOT_FOUND,ex);
+		}
+		return handle200OkRequest(shows);
+	}
 }

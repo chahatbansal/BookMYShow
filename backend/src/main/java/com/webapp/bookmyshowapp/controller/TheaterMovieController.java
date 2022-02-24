@@ -42,12 +42,11 @@ public class TheaterMovieController extends BaseExceptionHandler{
 		try {
 			log.info("Validating TheaterCreateForm");
 			validationErrorList = theaterMovieUtil.validate(theaterMovieCreateForm, validationErrorList);
-			log.info("City TheaterMovie Create Form Validation Completed");
+			log.info("TheaterMovie Create Form Validation Completed");
 			if(!validationErrorList.isEmpty()) {
 				log.error(" Error occuured while validating theaterMovieCreateForm || " + LogConstantUtil.LOG_VALIDATION_ERRORLIST, validationErrorList);
 				return handle400BadRequest(validationErrorList);
 			} 
-			log.info("Theater Movie Create Form Validation Completed");
 			theaterMovie=theaterMovieService.createTheaterMovie(theaterMovieCreateForm);
 			
 		}catch(MovieException me) {

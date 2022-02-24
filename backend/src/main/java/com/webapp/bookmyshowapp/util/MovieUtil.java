@@ -45,10 +45,10 @@ public class MovieUtil extends DateUtil{
 	}
 	
 	/*
-	 * create Mtudent
+	 * create movie
 	 * 
-	 * @param mtudent
-	 * @param createMtudentForm
+	 * @param movie
+	 * @param createMovieForm
 	 * @return
 	 * 
 	 */
