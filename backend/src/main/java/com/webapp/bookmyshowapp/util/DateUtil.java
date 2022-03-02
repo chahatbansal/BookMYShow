@@ -3,6 +3,7 @@ package com.webapp.bookmyshowapp.util;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class DateUtil {
@@ -24,5 +25,9 @@ public class DateUtil {
     
     public static long getMillis(Date date) {
     	return date.getTime(); 
+    }
+    
+    public LocalDateTime getCurrentLocalDateTime() {
+    	return LocalDateTime.now();
     }
 }

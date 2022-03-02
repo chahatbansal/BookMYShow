@@ -18,6 +18,8 @@ public class LogConstantUtil {
 
 	public static final String LOG_CAST_EXCEPTION = "CastException:: ";
 	
+	public static final String LOG_TICKET_EXCEPTION = "TicketException:: ";
+	
 	public static final String LOG_DBDOWN_AND_OTHER_EXCEPTION = "DatabaseDownOrOtherException:: Please check server logs to validate";
 	
 	public static final String LOG_DB_EXCEPTION = "DatabaseException:: ";

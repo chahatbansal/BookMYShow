@@ -21,7 +21,7 @@ public class TheaterValidation {
 	@Autowired
 	private CommonErrorMessageConstant commonErrorMessageConstant;
 	
-	  /*
+	 /*
      * validate theater
      * @param entity
      *

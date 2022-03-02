@@ -56,5 +56,9 @@ public class ConstantUtil {
 	public static final String ERROR_SHOW_NOT_FOUND  = "Error show does not exist";
 	
 	public static final String ERROR_MOVIE_SHOW_CREATE = "Error creating movie show";
+	public static final String ERROR_TICKET_CREATE  = "Error creating ticket";
+	public static final String ERROR_TICKET_NOT_FOUND = "Error ticket does not exist";
+	public static final String ERROR_TICKET_FETCH  = "Error fetching ticket in db";
 	
+	public static final String ERROR_GET_SHOW_AVAILIABILITY = "Error getting show availiability from ticket";
 }

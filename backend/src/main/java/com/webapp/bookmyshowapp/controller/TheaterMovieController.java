@@ -53,7 +53,7 @@ public class TheaterMovieController extends BaseExceptionHandler{
 			log.error("No movie exist for the given name in request" +LogConstantUtil.LOG_MOVIE_EXCEPTION,me);
 			return handle404ResourceNotFoundRequest(ConstantUtil.ERROR_MOVIE_NOT_FOUND,me);
 	    }catch(TheaterException ce) {
-			log.error("No Theater exist for the given name in request" +LogConstantUtil.LOG_CITY_EXCEPTION,ce);
+			log.error("No Theater exist for the given name in request" +LogConstantUtil.LOG_THEATER_EXCEPTION,ce);
 			return handle404ResourceNotFoundRequest(ConstantUtil.ERROR_THEATER_NOT_FOUND,ce);
 	    }catch(Exception ex) {
 	    	log.error("Exception Occured While creating theatermovie record " + LogConstantUtil.LOG_DBDOWN_AND_OTHER_EXCEPTION, ex);

@@ -58,4 +58,8 @@ public class Theater implements Serializable{
 	@JsonIgnore
 	private List<TheaterMovie> theaterMovies = new ArrayList<>();
 
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "theater", cascade = CascadeType.ALL)
+	private List<Ticket> tickets = new ArrayList<>();
+	
 }

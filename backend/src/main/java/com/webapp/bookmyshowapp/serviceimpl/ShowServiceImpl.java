@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.webapp.bookmyshowapp.exceptions.DaoException;
 import com.webapp.bookmyshowapp.form.ShowCreateForm;
@@ -26,6 +27,7 @@ public class ShowServiceImpl implements ShowService{
     ShowRepository showRepository;
     
 	@Override
+	@Transactional
 	public Show saveShow(ShowCreateForm showCreateForm) throws Exception {
 		// TODO Auto-generated method stub
 		 Show show = null;

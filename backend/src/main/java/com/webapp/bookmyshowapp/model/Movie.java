@@ -10,6 +10,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -70,6 +71,10 @@ public class Movie implements Serializable{
 	cascade = CascadeType.ALL)
 	@JsonIgnore
 	private List<MovieShow> movieShows = new ArrayList<>();
+
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "movie", cascade = CascadeType.ALL)
+	private List<Ticket> tickets = new ArrayList<>();
 
 
 }

@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -41,5 +42,9 @@ public class Show implements Serializable{
 	cascade = CascadeType.ALL)
 	@JsonIgnore
 	private List<MovieShow> theaterShows = new ArrayList<>();
+
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "show", cascade = CascadeType.ALL)
+	private List<Ticket> tickets = new ArrayList<>();
 
 }

@@ -11,4 +11,6 @@ import com.webapp.bookmyshowapp.model.Theater;
 public interface TheaterRepository extends JpaRepository<Theater,Long>{
 
 	Theater findByName(String name);
+	
+	Theater findById(long id);
 }

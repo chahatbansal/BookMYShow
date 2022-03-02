@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.webapp.bookmyshowapp.form.TheaterMovieCreateForm;
 import com.webapp.bookmyshowapp.model.Movie;
@@ -28,6 +29,7 @@ public class TheaterMovieServiceImpl implements TheaterMovieService{
 	
 	
 	@Override
+	@Transactional
 	public TheaterMovie createTheaterMovie(TheaterMovieCreateForm theaterMovieCreateForm) throws Exception {
 		// TODO Auto-generated method stub
 		TheaterMovie theaterMovie = null;

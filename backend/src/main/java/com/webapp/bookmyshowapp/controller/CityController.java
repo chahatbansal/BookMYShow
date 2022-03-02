@@ -29,7 +29,8 @@ import com.webapp.bookmyshowapp.util.LogConstantUtil;
 @RestController
 @RequestMapping(RestEndPoints.PARENTAPI)
 public class CityController extends BaseExceptionHandler {
-    Logger log = LoggerFactory.getLogger(CityController.class);
+
+	Logger log = LoggerFactory.getLogger(CityController.class);
 
     @Autowired
     CityUtil cityUtil;

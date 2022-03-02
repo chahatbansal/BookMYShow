@@ -1,18 +1,13 @@
 package com.webapp.bookmyshowapp.repository;
 
-import java.time.LocalTime;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.webapp.bookmyshowapp.model.Show;
+import com.webapp.bookmyshowapp.model.SeatDetail;
 
 @Repository
 @Transactional(readOnly=true)
-public interface ShowRepository extends JpaRepository<Show,Long>{
-	
-	Show findById(long id);
-	
-	Show findByShowTime(LocalTime showTime);
+public interface SeatDetailRepository extends JpaRepository<SeatDetail,Long>{
+
 }

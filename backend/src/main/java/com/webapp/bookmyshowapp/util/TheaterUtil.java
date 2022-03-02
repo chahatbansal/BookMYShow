@@ -10,9 +10,7 @@ import org.springframework.stereotype.Component;
 
 import com.webapp.bookmyshowapp.exceptions.CityException;
 import com.webapp.bookmyshowapp.exceptions.TheaterException;
-import com.webapp.bookmyshowapp.form.SubRegionCreateForm;
 import com.webapp.bookmyshowapp.form.TheaterCreateForm;
-import com.webapp.bookmyshowapp.model.City;
 import com.webapp.bookmyshowapp.model.SubRegion;
 import com.webapp.bookmyshowapp.model.Theater;
 import com.webapp.bookmyshowapp.repository.SubRegionRepository;
@@ -57,7 +55,7 @@ public class TheaterUtil extends DateUtil{
      */
 
     public Theater createTheater(TheaterCreateForm theaterCreateForm) throws Exception{
-        log.info("Setting Values for Cast from TheaterCreateForm");
+        log.info("Setting Values for theater from TheaterCreateForm");
         Theater theater = new Theater();
         SubRegion subRegion = null;
         try {
