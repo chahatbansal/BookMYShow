@@ -11,11 +11,11 @@ public interface TheaterMovieService {
 
 	TheaterMovie createTheaterMovie(TheaterMovieCreateForm theaterMovieCreateForm) throws Exception;
 	
-	Set<Movie> getAllMoviesByCity(long cityId);
+	Set<Movie> getAllMoviesByCity(String cityName);
 	
-	Set<Theater> getAllTheatersByCityAndMovie(long cityId,long movieId);
+	Set<Theater> getAllTheatersByCityAndMovie(String cityName,String movieName);
 	
-	Set<Theater> getAllTheatersByCityAndRegionAndMovie(long cityId,long regionId,long movieId);
+	Set<Theater> getAllTheatersByCityAndRegionAndMovie(String cityName,String regionName,String movieName);
 	
 	
 }

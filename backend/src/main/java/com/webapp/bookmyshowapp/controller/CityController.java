@@ -66,7 +66,7 @@ public class CityController extends BaseExceptionHandler {
     }
     
     
-    @GetMapping(RestEndPoints.GET_CITY)
+    @GetMapping(RestEndPoints.GET_CITY_BY_ID)
     public ResponseEntity<Object> getCity(@PathVariable("id") long id){
         City city = null;
         try {
@@ -82,6 +82,24 @@ public class CityController extends BaseExceptionHandler {
             return handle500InternalServerError(ConstantUtil.ERROR_CITY_FETCH,ex);
         }
         return handle200OkRequest(city);
+    }
+    
+    @GetMapping(RestEndPoints.GET_ALL_CITY)
+    public ResponseEntity<Object> getCity(){
+        List<City> cities = null;
+        try {
+            cities = cityService.getAllCities();
+            if(Objects.isNull(cities)) {
+				return handle404ResourceNotFoundRequest(ConstantUtil.ERROR_CITY_NOT_FOUND);
+			}
+        }catch(DaoException de) {
+            log.error("Exception occured while fetching all cities record in db " + LogConstantUtil.LOG_DAO_EXCEPTION, de);
+            return handle602DatabaseError(ConstantUtil.ERROR_CITY_FETCH, de);
+        }catch(Exception ex) {
+            log.error("Error occured while fetching cities from database",ex);
+            return handle500InternalServerError(ConstantUtil.ERROR_CITY_FETCH,ex);
+        }
+        return handle200OkRequest(cities);
     }
     
 }

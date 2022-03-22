@@ -7,13 +7,14 @@ public class RestEndPoints {
 	 * movie
 	 */
 	public static final String CREATE_MOVIE = "/movie/new";
-	public static final String GET_MOVIE = "/movie/{id}";
+	public static final String GET_MOVIE = "/movie/{movie_name}";
 	public static final String DELETE_MOVIE = "/movie/delete/{id}";
 	/*
 	* city
 	*/
 	public static final String CREATE_CITY = "/city/new";
-	public static final String GET_CITY = "/city/{id}";
+	public static final String GET_CITY_BY_ID = "/city/{id}";
+	public static final String GET_ALL_CITY = "/cities";
 	public static final String DELETE_CITY = "/city/delete/{id}";
 	
 	/*
@@ -22,9 +23,9 @@ public class RestEndPoints {
 	public static final String CREATE_THEATER_MOVIE = "/theatermovie/new";
 	public static final String CREATE_MOVIE_SHOW = "/movieshow/new";
 	
-	public static final String GET_MOVEIS_BY_CITY = "/moviesby/{city_id}";
-	public static final String GET_THEATERS_BY_CITY_MOVIE = "/theaters/{city_id}/{movie_id}";
-	public static final String GET_THEATERS_BY_CITY_REGION_MOVIE = "/theaters/{city_id}/{region_id}/{movie_id}";
+	public static final String GET_MOVEIS_BY_CITY = "/movies/{city_name}";
+	public static final String GET_THEATERS_BY_CITY_MOVIE = "/theaters/{city_name}/{movie_name}";
+	public static final String GET_THEATERS_BY_CITY_REGION_MOVIE = "/theaters/{city_name}/{region_name}/{movie_name}";
 	/*
 	 * casting
 	 */
@@ -54,7 +55,7 @@ public class RestEndPoints {
 	
 	public static final String CREATE_SHOW = "/show/new";
 	
-	public static final String GET_SHOWS_BY_MOVIE = "/showsby/{movie_id}/{show_date}";
+	public static final String GET_SHOWS_BY_MOVIE = "/shows/{movie_name}/{show_date}";
 	
 	public static final String CREATE_TICKET = "/ticket/new";
 	public static final String GET_TICKET = "/ticket/{id}";

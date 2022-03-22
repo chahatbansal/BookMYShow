@@ -17,6 +17,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.webapp.bookmyshowapp.enums.CertificateType;
 import com.webapp.bookmyshowapp.enums.Genre;
@@ -49,14 +50,19 @@ public class Movie implements Serializable{
 	private MovieLanguage language;
 	
 	private String duration;
+
+	private String imageName;
 	
+	private String backgroundImageName;
+	
+	@JsonFormat(pattern = "dd MMMM yyyy")
 	private Date releaseDate;
 	
 	@Enumerated(EnumType.STRING)
 	private Genre genre;
 	
 	@Enumerated(EnumType.STRING)
-	private CertificateType certifcateType;
+	private CertificateType certificateType;
 	
 	private Integer rating;
 	
@@ -75,6 +81,5 @@ public class Movie implements Serializable{
 	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "movie", cascade = CascadeType.ALL)
 	private List<Ticket> tickets = new ArrayList<>();
-
 
 }

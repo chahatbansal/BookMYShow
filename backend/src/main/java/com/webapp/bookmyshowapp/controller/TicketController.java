@@ -59,13 +59,13 @@ public class TicketController extends BaseExceptionHandler{
             log.error("Exception occured while validating ticket Create Form in cityUtil " +LogConstantUtil.LOG_TICKET_EXCEPTION,te);
             return handle400BadRequest(ConstantUtil.ERROR_TICKET_CREATE,te);
         }catch(MovieException me) {
-			log.error("No movie exist for the given Id in request" +LogConstantUtil.LOG_MOVIE_EXCEPTION,me);
+			log.error("No movie exist for the given name in request" +LogConstantUtil.LOG_MOVIE_EXCEPTION,me);
 			return handle404ResourceNotFoundRequest(ConstantUtil.ERROR_MOVIE_NOT_FOUND,me);
 	    }catch(TheaterException ce) {
-			log.error("No Theater exist for the given Id in request" +LogConstantUtil.LOG_THEATER_EXCEPTION,ce);
+			log.error("No Theater exist for the given name in request" +LogConstantUtil.LOG_THEATER_EXCEPTION,ce);
 			return handle404ResourceNotFoundRequest(ConstantUtil.ERROR_THEATER_NOT_FOUND,ce);
 	    }catch(ShowException se) {
-			log.error("No Show exist for the given Id in request" +LogConstantUtil.LOG_SHOW_EXCEPTION,se);
+			log.error("No Show exist for the given show time in request" +LogConstantUtil.LOG_SHOW_EXCEPTION,se);
 			return handle404ResourceNotFoundRequest(ConstantUtil.ERROR_SHOW_NOT_FOUND,se);
 	    }catch(Exception ex) {
         	log.error("Exception Occured While creating ticket record " + LogConstantUtil.LOG_DBDOWN_AND_OTHER_EXCEPTION, ex);

@@ -1,6 +1,8 @@
 package com.webapp.bookmyshowapp.serviceimpl;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Set;
 
 import org.slf4j.Logger;
@@ -44,16 +46,28 @@ public class MovieShowServiceImpl implements MovieShowService{
 	}
 
 	@Override
-	public Set<Show> getShowsByMovie(long movieId) {
+	public Set<Show> getShowsByMovie(String movieName, String showDate) {
 		// TODO Auto-generated method stub
 		Set<Show> shows=null;
 		try {
-			LocalTime currentTime = LocalTime.now();
-			shows = movieShowRepository.getAllShowsByMovie(movieId,currentTime);
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+			LocalDate convertedShowDate = LocalDate.parse(showDate, formatter);
+			LocalDate currentDate = LocalDate.now();
+			if(convertedShowDate.getDayOfMonth() > currentDate.getDayOfMonth() && convertedShowDate.getYear() >= currentDate.getYear() 
+					&& convertedShowDate.getMonthValue() >= currentDate.getMonthValue()) {
+				log.info("Getting all the shows of movies for next days");
+				shows = movieShowRepository.getAllShowsByMovie(movieName);
+			}else {
+				log.info("Getting all the shows of movies for same day");
+				LocalTime currentTime = LocalTime.now();
+				shows = movieShowRepository.getAllShowsByMovie(movieName,currentTime);
+			}
+			
 		}catch(Exception ex) {
 			throw ex;
 		}
 		return shows;
 	}
+
 
 }

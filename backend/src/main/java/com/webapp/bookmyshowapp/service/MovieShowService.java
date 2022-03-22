@@ -10,5 +10,5 @@ public interface MovieShowService {
 
 	MovieShow createMovieShow(MovieShowCreateForm movieShowCreateForm) throws Exception;
 	
-	Set<Show> getShowsByMovie(long movieId);
+	Set<Show> getShowsByMovie(String movieName, String showDate);
 }

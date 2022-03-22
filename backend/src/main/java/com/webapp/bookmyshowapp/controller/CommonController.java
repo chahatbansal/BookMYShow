@@ -45,10 +45,10 @@ public class CommonController extends BaseExceptionHandler{
 	TicketService ticketService;
 	
 	@GetMapping(RestEndPoints.GET_MOVEIS_BY_CITY)
-	public ResponseEntity<Object> getMoviesByCity(@PathVariable("city_id") long cityId){
+	public ResponseEntity<Object> getMoviesByCity(@PathVariable("city_name") String cityName){
 		Set<Movie> movies = null;
 		try {
-			movies = theaterMovieService.getAllMoviesByCity(cityId);
+			movies = theaterMovieService.getAllMoviesByCity(cityName);
 			if(Objects.isNull(movies) || movies.isEmpty()) {
 				return handle404ResourceNotFoundRequest(ConstantUtil.ERROR_MOVIE_NOT_FOUND);
 			}
@@ -60,10 +60,10 @@ public class CommonController extends BaseExceptionHandler{
 	}
 	
 	@GetMapping(RestEndPoints.GET_THEATERS_BY_CITY_MOVIE)
-	public ResponseEntity<Object> getAllTheatersByCityAndMovie(@PathVariable("city_id") long cityId,@PathVariable("movie_id") long movieId){
+	public ResponseEntity<Object> getAllTheatersByCityAndMovie(@PathVariable("city_name") String cityName,@PathVariable("movie_name") String movieName){
 		Set<Theater> theaters = null;
 		try {
-			theaters = theaterMovieService.getAllTheatersByCityAndMovie(cityId,movieId);
+			theaters = theaterMovieService.getAllTheatersByCityAndMovie(cityName,movieName);
 			if(Objects.isNull(theaters) || theaters.isEmpty()) {
 				return handle404ResourceNotFoundRequest(ConstantUtil.ERROR_THEATER_NOT_FOUND);
 			}
@@ -76,10 +76,10 @@ public class CommonController extends BaseExceptionHandler{
 	
 
 	@GetMapping(RestEndPoints.GET_THEATERS_BY_CITY_REGION_MOVIE)
-	public ResponseEntity<Object> getAllTheatersByCityAndRegionAndMovie(@PathVariable("city_id") long cityId,@PathVariable("region_id") long regionId,@PathVariable("movie_id") long movieId){
+	public ResponseEntity<Object> getAllTheatersByCityAndRegionAndMovie(@PathVariable("city_name") String cityName,@PathVariable("region_name") String regionName,@PathVariable("movie_name") String movieName){
 		Set<Theater> theaters = null;
 		try {
-			theaters = theaterMovieService.getAllTheatersByCityAndRegionAndMovie(cityId,regionId,movieId);
+			theaters = theaterMovieService.getAllTheatersByCityAndRegionAndMovie(cityName,regionName,movieName);
 			if(Objects.isNull(theaters) || theaters.isEmpty()) {
 				return handle404ResourceNotFoundRequest(ConstantUtil.ERROR_THEATER_NOT_FOUND);
 			}
@@ -91,11 +91,11 @@ public class CommonController extends BaseExceptionHandler{
 	}
 	
 	@GetMapping(RestEndPoints.GET_SHOWS_BY_MOVIE)
-	public ResponseEntity<Object> getAllTheatersByCityAndRegionAndMovie(@PathVariable("movie_id") long movieId,@PathVariable("show_date") String showDate ){
+	public ResponseEntity<Object> getAllTheatersByCityAndRegionAndMovie(@PathVariable("movie_name") String movieName,@PathVariable("show_date") String showDate ){
 		Set<Show> shows = null;
 		try {
 			log.info("Show Date : " + showDate);
-			shows = movieShowService.getShowsByMovie(movieId);
+			shows = movieShowService.getShowsByMovie(movieName,showDate);
 		}catch(Exception ex) {
 			log.error("Exception Occured While geting shows " + LogConstantUtil.LOG_DBDOWN_AND_OTHER_EXCEPTION, ex);
 	    	return handle500InternalServerError(ConstantUtil.ERROR_SHOW_NOT_FOUND,ex);

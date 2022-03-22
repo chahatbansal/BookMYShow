@@ -1,5 +1,7 @@
 package com.webapp.bookmyshowapp.serviceimpl;
 
+import java.util.List;
+
 import javax.persistence.PersistenceException;
 
 import org.slf4j.Logger;
@@ -56,5 +58,19 @@ public class CityServiceImpl implements CityService {
 			throw ex;
 		}
 		return city;
+	}
+
+	@Override
+	public List<City> getAllCities() {
+		// TODO Auto-generated method stub
+		List<City> cities=null;
+		try {
+			log.info("Fetching all cities from database");
+			cities = cityRepository.findAll();
+			log.info("Cities fetched from database successfully");
+		}catch(Exception ex) {
+			throw ex;
+		}
+		return cities;
 	}
 }

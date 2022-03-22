@@ -74,15 +74,15 @@ public class TicketUtil extends DateUtil{
         	
         	Movie movie = movieRepository.findByName(ticketCreateForm.getMovie().getName());
         	if(Objects.isNull(movie)) {
-            	throw new MovieException("Movie Not Found For Id : " + ticketCreateForm.getMovie().getName());
+            	throw new MovieException("Movie Not Found For name : " + ticketCreateForm.getMovie().getName());
             }
         	Theater theater = theaterRepository.findByName(ticketCreateForm.getTheater().getName());
         	if(Objects.isNull(theater)) {
-            	throw new TheaterException("Theater Not Found For Id : " + ticketCreateForm.getTheater().getName());
+            	throw new TheaterException("Theater Not Found For name : " + ticketCreateForm.getTheater().getName());
             }
         	Show show = showRepository.findByShowTime(ticketCreateForm.getShow().getShowTime());
         	if(Objects.isNull(show)) {
-            	throw new ShowException("Show Not Found For Id : " + ticketCreateForm.getShow().getShowTime());
+            	throw new ShowException("Show Not Found For time : " + ticketCreateForm.getShow().getShowTime());
             }
         	ticket.setMovie(movie);
         	ticket.setTheater(theater);

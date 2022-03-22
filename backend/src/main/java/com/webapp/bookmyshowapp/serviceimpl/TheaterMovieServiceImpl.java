@@ -46,11 +46,11 @@ public class TheaterMovieServiceImpl implements TheaterMovieService{
 
 
 	@Override
-	public Set<Movie> getAllMoviesByCity(long cityId) {
+	public Set<Movie> getAllMoviesByCity(String cityName) {
 		// TODO Auto-generated method stub
 		Set<Movie> movies=null;
 		try {
-			movies = theaterMovieRepository.getAllMoviesByCity(cityId);
+			movies = theaterMovieRepository.getAllMoviesByCity(cityName);
 		}catch(Exception ex) {
 			throw ex;
 		}
@@ -59,11 +59,11 @@ public class TheaterMovieServiceImpl implements TheaterMovieService{
 
 
 	@Override
-	public Set<Theater> getAllTheatersByCityAndMovie(long cityId,long movieId) {
+	public Set<Theater> getAllTheatersByCityAndMovie(String cityName,String movieName) {
 		// TODO Auto-generated method stub
 		Set<Theater> theaters=null;
 		try {
-			theaters = theaterMovieRepository.getAllTheatersByCityAndMovie(cityId,movieId);
+			theaters = theaterMovieRepository.getAllTheatersByCityAndMovie(cityName,movieName);
 		}catch(Exception ex) {
 			throw ex;
 		}
@@ -72,11 +72,11 @@ public class TheaterMovieServiceImpl implements TheaterMovieService{
 
 
 	@Override
-	public Set<Theater> getAllTheatersByCityAndRegionAndMovie(long cityId, long regionId, long movieId) {
+	public Set<Theater> getAllTheatersByCityAndRegionAndMovie(String cityName,String regionName,String movieName) {
 		// TODO Auto-generated method stub
 		Set<Theater> theaters=null;
 		try {
-			theaters = theaterMovieRepository.getAllTheatersByCityAndRegionAndMovie(cityId,regionId,movieId);
+			theaters = theaterMovieRepository.getAllTheatersByCityAndRegionAndMovie(cityName,regionName,movieName);
 		}catch(Exception ex) {
 			throw ex;
 		}
