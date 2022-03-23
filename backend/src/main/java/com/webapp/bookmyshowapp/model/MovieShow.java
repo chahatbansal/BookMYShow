@@ -38,6 +38,30 @@ public class MovieShow implements Serializable{
         this.show = show;
         this.id = new MovieShowId(movie.getId(), show.getId());
     }
-	
+
 	public MovieShow() {}
+
+	public com.webapp.bookmyshowapp.model.MovieShowId getId() {
+		return id;
+	}
+
+	public void setId(com.webapp.bookmyshowapp.model.MovieShowId id) {
+		this.id = id;
+	}
+
+	public Movie getMovie() {
+		return movie;
+	}
+
+	public void setMovie(Movie movie) {
+		this.movie = movie;
+	}
+
+	public com.webapp.bookmyshowapp.model.Show getShow() {
+		return show;
+	}
+
+	public void setShow(com.webapp.bookmyshowapp.model.Show show) {
+		this.show = show;
+	}
 }
